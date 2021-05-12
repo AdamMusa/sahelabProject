@@ -18,5 +18,9 @@ class ObjectRecognize:
 
     def detectObject(self):
         face,eyes,ret,frame = init()
-        faces = face.detectMultiScale(scaleFactor=1.1,
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        faces = face.detectMultiScale(gray,scaleFactor=1.1,
         minNeighbors=5,minSize=(30, 30),)
+
+        for (x,y,w,h) in faces:
+            pass
