@@ -1,21 +1,13 @@
-import cv2
-import numpy as np
+import cv
+from src.objectRecognize import ObjectRecognize
 
-cap = cv2.VideoCapture(0)
 
-def empty(a):
-    pass
-while True:
-    ret, frame = cap.read()
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    # cv2.putText(frame,"OpenCV",(300,200),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
-    cv2.namedWindow("Hello")
-    cv2.resizeWindow("Hello",(200,300))
-    cv2.createTrackbar("Min","Hello",1,190,empty)
-    cv2.imshow('frame',gray)
+if __name__ == "__main__":
+    objRecognize = ObjectRecognize(
+    "provider/haarcascade_frontalface_default.xml",
+    "provider/haarcascade_eye.xml")
+    cap = objRecognize.videoInitialize()
 
-    if cv2.waitKey(1)== ord("q"):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
+    #For end instructions
+    cap.release()
+    cv2.destroyAllWindows()
