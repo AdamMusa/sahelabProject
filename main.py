@@ -1,13 +1,13 @@
 import cv2
-from src.objectRecognize import ObjectRecognize
+from src.objectRecognize import ObjectRecognizer
 
 
 if __name__ == "__main__":
-    objRecognize = ObjectRecognize(
+    objRecognizer = ObjectRecognizer(
     "provider/haarcascade_frontalface_default.xml",
     "provider/haarcascade_eye.xml")
-    objRecognize.detectObject()
-    cap = objRecognize.initializeVideo()
+    objRecognizer.detectObject()
+    cap = objRecognizer.initializeVideo()
     #For end instructions
     cap.release()
     cv2.destroyAllWindows()
