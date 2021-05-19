@@ -6,17 +6,15 @@ class ObjectRecognizer:
     def __init__(self,haarFace,haarEyes):
         self.haarFace = haarFace
         self.haarEyes = haarEyes
-
-    def initializeVideo(self):
-        return cv2.VideoCapture(0)
+    cap  = cv2.VideoCapture(0)
 
     def detectObject(self):
         faceCascade = cv2.CascadeClassifier(self.haarFace)
         eyesCascade = cv2.CascadeClassifier(self.haarEyes)
-        cap = self.initializeVideo()
+
 
         while True:
-            ret,frame = cap.read()
+            ret,frame = self.cap.read()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             faces = faceCascade.detectMultiScale(gray,1.3,5)
             for (x,y,w,h) in faces:
